@@ -14,3 +14,6 @@ document.log(document.all[10]);
 console.log(document.getElementById('header-title'));
 var headerTitle = document.getElementById('header-title');
 console.log(headerTitle);
+
+const elements = document.getElementsByClassName("my-class");
+
