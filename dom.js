@@ -15,5 +15,6 @@ console.log(document.getElementById('header-title'));
 var headerTitle = document.getElementById('header-title');
 console.log(headerTitle);
 
-const elements = document.getElementsByClassName("my-class");
-
+var item = document.querySelector('.list-group-item');
+item.style.background = "green";
+document.getElementById("item3").style.display = "none";
