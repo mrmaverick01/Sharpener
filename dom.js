@@ -41,3 +41,20 @@ newChild.appendChild(newDiv);
 var container = document.querySelector('header .container');
 var h1 = document.querySelector('header h1');
 container.insertBefore(newChild,h1);
+
+
+var newLi = document.createElement("li");
+var deleteBtn = document.createElement("button");
+deleteBtn.innerHTML = "Delete";
+deleteBtn.classList.add("delete-btn");
+var editBtn = document.createElement("button");
+editBtn.innerHTML = "Edit";
+editBtn.classList.add("edit-btn");
+newLi.appendChild(deleteBtn);
+newLi.appendChild(editBtn);
+var items = document.getElementById("items");
+items.appendChild(newLi);
+deleteBtn.addEventListener("click", function() {
+  newLi.remove();
+});
+
