@@ -1,0 +1,80 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Html from</title>
+</head>
+<body>
+    <h2>Registration form</h2>  
+    <form>  
+     <fieldset>  
+        <legend>User personal information</legend>  
+        <label>Enter your full name</label><br>  
+        <input type="text" name="name"><br>  
+         <label>Enter your email</label><br>  
+         <input type="email" name="email"><br>  
+         <label>Enter your password</label><br>  
+         <input type="password" name="pass"><br>  
+         <label>confirm your password</label><br>  
+         <input type="password" name="pass"><br>  
+         <br><label>Enter your gender</label><br>  
+         <input type="radio" id="gender" name="gender" value="male"/>Male  <br>  
+         <input type="radio" id="gender" name="gender" value="female"/>Female <br/>    
+         <input type="radio" id="gender" name="gender" value="others"/>others <br/>   
+          <br>Enter your Address:<br>  
+         <textarea></textarea><br>  
+         <input type="submit" value="sign-up">  
+     </fieldset>  
+     </form>
+     <div id="user-details"></div>
+
+</body>
+<script type="text/javascript">
+    // Get the form element
+    var form = document.querySelector("form");
+    // Add a submit event listener to the form
+    form.addEventListener("submit", function(e) {
+  e.preventDefault();
+  var name = form.querySelector("input[name='name']");
+      var email = form.querySelector("input[name='email']");
+      var pass = form.querySelector("input[name='pass']");
+      var gender = document.querySelector("input[name='gender']:checked");
+      var address = form.querySelector("textarea");
+      // Create an object to store the user details
+      var user = {
+        name: name.value,
+        email: email.value,
+        pass: pass.value,
+        gender: gender.value,
+        address: address.value
+      };
+      // Store the user object in local storage as a string
+      localStorage.setItem("user", JSON.stringify(user));
+      // Display the user details on the screen
+      var userDetails = document.getElementById("user-details");
+      userDetails.innerHTML = `<p>Name: ${user.name}</p>
+                              <p>Email: ${user.email}</p>
+                              <p>Gender: ${user.gender}</p>
+                              <p>Address: ${user.address}</p>`;
+      alert("User details saved in local storage and displayed on the screen!");
+  // Create a delete button
+  var deleteBtn = document.createElement("button");
+  deleteBtn.innerHTML = "Delete";
+  // Append the button to the user-details div
+  document.getElementById("user-details").appendChild(deleteBtn);
+  // Add a click event listener to the button
+  deleteBtn.addEventListener("click", function() {
+    // Remove the user item from local storage
+    localStorage.removeItem("user");
+    // Set the innerHTML of the user-details div to an empty string
+    document.getElementById("user-details").innerHTML = "";
+    alert("User details have been deleted from local storage and the UI!");
+  });
+});
+
+  </script>
+  
+  
+</html>
